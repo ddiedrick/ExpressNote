@@ -25,12 +25,13 @@ router.post('/api/notes', (req, res) => {
 });
 
 router.delete('/api/notes/:id',(req, res) => {
-    const db2 = db.filter((note) =>
-        note.id !== req.params.id)
-
-    // update the db.json file 
-    fs.writeFileSync('./db/db.json', JSON.stringify(db2));
-    readFile.json(db2);
+   // read notes from db.json
+   let db = JSON.parse(fs.readFileSync('db/db.json'))
+   // removing note with id
+   let deleteNote = db.filter(item => item.id !== req.params.id);
+   // Rewriting notes list to db.json
+   fs.writeFileSync('db/db.json', JSON.stringify(deleteNote));
+   res.json(deleteNote);
 });
 
 module.exports = router;
