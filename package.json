@@ -5,12 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "heroku": "^8.1.9",
     "uuidv4": "^6.2.13"
   }
 }
